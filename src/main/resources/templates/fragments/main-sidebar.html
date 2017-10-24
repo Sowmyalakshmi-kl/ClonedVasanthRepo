@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<!-- sidebar: style can be found in sidebar.less -->
+	<section class="sidebar">
+		<!-- sidebar menu: : style can be found in sidebar.less -->
+		<ul class="sidebar-menu" data-widget="tree">
+			<li class="header">MAIN NAVIGATION</li>
+
+			<li class="treeview"><a href="#"> <i class="fa fa-edit"></i>
+					<span>Admin Setup</span> <span class="pull-right-container">
+						<i class="fa fa-angle-left pull-right"></i>
+				</span>
+			</a>
+				<ul class="treeview-menu">
+					<li><a href="#" th:href="@{'/admin/entity'}"><i
+							class="fa fa-circle-o"></i>Entity</a></li>
+					<li><a href="#" th:href="@{'/admin/role'}"><i
+							class="fa fa-circle-o"></i>Role</a></li>
+					<li><a href="#" href="@{'/admin/user'}"><i
+							class="fa fa-circle-o"></i>User</a></li>
+				</ul></li>
+
+			<li class="treeview"><a href="#"> <i class="fa fa-edit"></i>
+					<span>Reports</span> <span class="pull-right-container"> <i
+						class="fa fa-angle-left pull-right"></i>
+				</span>
+			</a>
+				<ul class="treeview-menu">
+					<li><a href="#" th:href="@{'/fileUpload/upload'}"><i
+							class="fa fa-circle-o"></i>File Upload</a></li>
+				</ul></li>
+
+
+
+
+		</ul>
+	</section>
+	<!-- /.sidebar -->
+</body>
+</html>

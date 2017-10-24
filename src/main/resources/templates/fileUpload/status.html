@@ -1,0 +1,26 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+	<h2>Status Report</h2>
+	<div>
+		<table>
+			<tr>
+				<td>File Name :</td>
+				<td>
+					<p th:utext="${FileName}"></p>
+				</td>
+			</tr>
+
+			<tr>
+				<td>Message :</td>
+				<td><p th:utext="${message}"></p></td>
+			</tr>
+			<tr>
+				<td>Action :</td>
+				<td><a href="#" th:href="@{'/fileUpload/upload'}">Click
+						here to go back to upload</a></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>
