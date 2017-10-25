@@ -31,8 +31,7 @@ public class RoleController extends BaseController {
 		ModelAndView modelAndView = new ModelAndView();
 		// The below two lines is must for entity list page loading and saving the
 		// entity bcoz it sets the request scope..
-		Role role = new Role();
-		modelAndView.addObject("role", role);
+		modelAndView.addObject("role", new Role());
 		model.addAttribute("roleList", roleService.findAll());
 		modelAndView.setViewName(ROLE_VIEW);
 		return modelAndView;
@@ -51,12 +50,12 @@ public class RoleController extends BaseController {
 		// Save and update are same method -- JPA will understand whether this has to
 		// save or update based on roleid PK.
 		ModelAndView modelAndView = new ModelAndView();
-		System.err.println("Add Roles "+role.getRole());
+		LOG.info("Add Roles "+role.getRole());
 		role.setActive(1);
 		role.setCreatedBy("Vasanth");
 		role.setCreatedDate(new Date(System.currentTimeMillis()));
 		roleService.save(role);
-		modelAndView.addObject("role", role);
+		modelAndView.addObject("role", new Role());
 		modelAndView.setViewName(REDIRECT_ROLE_VIEW);
 		return modelAndView;
 	}
