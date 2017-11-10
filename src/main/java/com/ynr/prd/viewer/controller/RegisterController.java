@@ -46,7 +46,7 @@ public class RegisterController extends BaseController {
 
 			/** Email Config **/
 			String subject = "Registration Confirmation";
-			String fromAddr = "vasanthakumar.rajendran@merrillcorp.com";
+			String fromAddr = "vasanthakumar.rajendran@.com";
 			String toAddr = user.getEmail();
 			String text = "New user has been created " + user.getName();
 
