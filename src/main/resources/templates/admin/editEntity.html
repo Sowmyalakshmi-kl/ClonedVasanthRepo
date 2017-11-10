@@ -79,7 +79,7 @@
 									<h4 class="modal-title" th:text="#{CREATE_ENTITY}"></h4>
 								</div>
 								<div class="modal-body">
-									<form action="#"  th:action="@{/admin/entity/edit(Id=${singleEntity.entityId})}" method="post" class="form-horizontal" role="form">
+									<form action="#"  th:action="@{/admin/entity/edit(Id=${singleEntity.entityId})}"  th:object="${singleEntity}" method="post" class="form-horizontal">
 										<div class="box-body">
 
 											<div class="form-group">

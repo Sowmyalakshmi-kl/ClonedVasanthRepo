@@ -16,10 +16,16 @@ public abstract class BaseController {
 
 	/** Admin User Rights Starts **/
 	static final String ENTITY_VIEW = "/admin/entity";
+	static final String EDIT_ENTITY_VIEW = "/admin/editEntity";
 	static final String REDIRECT_ENTITY_VIEW = "redirect:/admin/entity";
 
 	static final String ROLE_VIEW = "/admin/role";
 	static final String REDIRECT_ROLE_VIEW = "redirect:/admin/role";
+	
+	static final String USER_VIEW = "/admin/user";
+	static final String REDIRECT_USER_VIEW = "redirect:/admin/user";
+	
+	
 	/** Admin Rights Ends **/
 
 	/** App User Rights Starts **/

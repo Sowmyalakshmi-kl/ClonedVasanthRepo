@@ -1,4 +1,4 @@
-package com.ynr.prd.viewer;
+package com.ynr.prd.viewer.interceptor;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

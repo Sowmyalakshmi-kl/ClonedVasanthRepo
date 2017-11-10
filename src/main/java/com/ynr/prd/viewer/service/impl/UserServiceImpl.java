@@ -35,7 +35,8 @@ public class UserServiceImpl implements UserService {
 		user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 		user.setActive(1);
 		// Role table has to be created first and then findbyrole has been passed to get
-		// the id's of it..Argument has been passed as requested_user in app at the time of registration.Once user logged in user have provision
+		// the id's of it..Argument has been passed as requested_user in app at the time
+		// of registration.Once user logged in user have provision
 		// to create the user that has been sent as Argument APP_USER.
 		Role userRole = roleRepository.findByRole("ADMIN");
 		userRole.setDescription("Role has been created via App !!!");
@@ -49,6 +50,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> findAllUsers() {
 		return userRepository.findAll();
+	}
+
+	@Override
+	public void delete(Integer id) {
+		long userId = id;
+		userRepository.delete(userId);
 	}
 
 }
