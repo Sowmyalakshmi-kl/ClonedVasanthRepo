@@ -9,9 +9,11 @@ Mysql		- 5.1.40.
 i18N concept
 Validation
 Email notification after new user has been registered or created,
+File Upload 
+Report excel,csv and pdf
 
 User 
-	App 
+	App  User Role Entity
 	Admin
 	Demo
 	
