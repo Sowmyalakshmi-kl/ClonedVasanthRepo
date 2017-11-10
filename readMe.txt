@@ -7,7 +7,8 @@ Spring JPA - spring-boot-starter-data-jpa 1.10.5 RELEASE.
 Hibernate	- 5.0.1/11.
 Mysql		- 5.1.40. 
 i18N concept
-
+Validation
+Email notification after new user has been registered or created,
 
 User 
 	App 

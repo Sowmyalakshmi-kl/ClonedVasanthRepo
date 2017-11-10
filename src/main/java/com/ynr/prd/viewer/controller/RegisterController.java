@@ -1,22 +1,20 @@
 package com.ynr.prd.viewer.controller;
 
 import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.SimpleMailMessage;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
-
 import com.ynr.prd.viewer.model.User;
 import com.ynr.prd.viewer.service.EmailService;
 import com.ynr.prd.viewer.service.UserService;
+import com.ynr.prd.viewer.utils.EmailUtils;
 
 @RestController
 public class RegisterController extends BaseController {
-	
+
 	@Autowired
 	private UserService userService;
 	@Autowired
@@ -44,17 +42,20 @@ public class RegisterController extends BaseController {
 			modelAndView.setViewName(REGISTRATION);
 		} else {
 			userService.saveUser(user);
-			
 			modelAndView.addObject("user", new User());
 
-			SimpleMailMessage registrationEmail = new SimpleMailMessage();
-			registrationEmail.setTo(user.getEmail());
-			registrationEmail.setSubject("Registration Confirmation");
-			registrationEmail.setText("New user has been created " + user.getName());
-			registrationEmail.setFrom("vasanthakumar.rajendran@merrillcorp.com");
+			/** Email Config **/
+			String subject = "Registration Confirmation";
+			String fromAddr = "vasanthakumar.rajendran@merrillcorp.com";
+			String toAddr = user.getEmail();
+			String text = "New user has been created " + user.getName();
 
-			emailService.sendEmail(registrationEmail);
-			modelAndView.addObject("successMessage", "User has been registered successfully and confirmation e-mail has been sent to "+user.getEmail());
+			emailService.sendEmail(EmailUtils.getEmailConfiguration(text, subject, fromAddr, toAddr));
+			
+			
+			modelAndView.addObject("successMessage",
+					"User has been registered successfully and confirmation e-mail has been sent to "
+							+ user.getEmail());
 			modelAndView.setViewName(REGISTRATION);
 		}
 
