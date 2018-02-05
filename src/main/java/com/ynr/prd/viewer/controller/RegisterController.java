@@ -12,6 +12,7 @@ import com.ynr.prd.viewer.service.EmailService;
 import com.ynr.prd.viewer.service.UserService;
 import com.ynr.prd.viewer.utils.EmailUtils;
 
+
 @RestController
 public class RegisterController extends BaseController {
 
@@ -36,23 +37,35 @@ public class RegisterController extends BaseController {
 		User userExists = userService.findUserByEmail(user.getEmail());
 		if (userExists != null) {
 			bindingResult.rejectValue("email", "error.user",
-					"There is already a user registered with the email provided");
-		}
+					"There is already a user registered with the email provided");		}
 		if (bindingResult.hasErrors()) {
 			modelAndView.setViewName(REGISTRATION);
 		} else {
+			String actualPassword = user.getPassword();
+
 			userService.saveUser(user);
 			modelAndView.addObject("user", new User());
 
 			/** Email Config **/
 			String subject = "Registration Confirmation";
-			String fromAddr = "vasanthakumar.rajendran@.com";
+			String fromAddr = "vasanthakumar.rajendran@.com"; // Need to change no domain
 			String toAddr = user.getEmail();
-			String text = "New user has been created " + user.getName();
+			String link = "<a href=\"http://localhost:8080/ePubViewer/\">Click Here</a>";
+			
+			StringBuilder appendBodyText = new StringBuilder();
 
-			emailService.sendEmail(EmailUtils.getEmailConfiguration(text, subject, fromAddr, toAddr));
+			appendBodyText.append("Welcome " + user.getName() + " , \n");
+
+			appendBodyText.append("Please find your login details in below, \n");
+
+			appendBodyText.append("Username : " + user.getEmail() + " \n");
+
+			appendBodyText.append("Password : " + actualPassword + "\n");
 			
-			
+			appendBodyText.append(link);
+
+			emailService.sendEmail(EmailUtils.getEmailConfiguration(appendBodyText.toString(), subject, fromAddr, toAddr));
+
 			modelAndView.addObject("successMessage",
 					"User has been registered successfully and confirmation e-mail has been sent to "
 							+ user.getEmail());
